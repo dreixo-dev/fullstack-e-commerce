@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Dreixo E-Commerce
 
-## Getting Started
+Overview
+Dreixo is a full-stack e-commerce application that provides a seamless shopping experience. Users can browse products, manage their shopping cart, and complete purchases securely. Built with modern technologies, Dreixo ensures a responsive and user-friendly interface.
 
-First, run the development server:
+Features
+User Authentication: Secure registration and login using Clerk.
+Product Management: Dynamic product catalog powered by Sanity.io.
+Shopping Cart: Add, remove, and update items in the cart.
+Checkout Process: Simple and secure checkout with Stripe integration.
+Order Management: Users can view and track their order history.
+Responsive Design: Optimized for both desktop and mobile devices.
 
-```bash
+Technologies Used
+Frontend:
+Next.js
+TypeScript
+Tailwind CSS
+Clerk (for authentication)
+
+Backend:
+Node.js
+Express.js
+MongoDB (for data storage)
+Stripe (for payment processing)
+Installation
+Prerequisites
+Node.js (v14 or later)
+MongoDB (or your chosen database)
+
+Clone the Repository:
+https://github.com/dreixo-dev/fullstack-e-commerce
+
+Install dependencies:
+npm install
+
+Start the development server:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Usage
+Open your browser and navigate to http://localhost:3000 to access the Dreixo application.
+Create an account or log in to start shopping.
+Browse products, add them to your cart, and proceed to checkout.
+Contributing
+Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Fork the repository.
+Create a new branch (git checkout -b feature/YourFeature).
+Make your changes and commit them (git commit -m 'Add some feature').
+Push to the branch (git push origin feature/YourFeature).
+Open a pull request.
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Contact
+For any inquiries or feedback, please reach out to:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Your Name: ryanobedientes@gmail.com
+GitHub: dreixo-dev
