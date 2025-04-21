@@ -20,7 +20,7 @@ const HomeCategories = ({ categories }: { categories: Category[] }) =>
         group">
         {category?.image && (
         <div className="overflow-hidden border
-        border-shop_orange/30 hover:border-shop_orange 
+        border-shop_dark_green hover:border-shop_orange 
         hoverEffect w-20 h-20 p-1">
             <Link href={`/category/${category?.slug?.current}`}>
             <Image 
