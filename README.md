@@ -1,6 +1,6 @@
 # Dreixo E-Commerce
 
-![Dreixo Logo](This PC/Pictures/logo.png) <!-- Replace with the actual path to your logo -->
+![Dreixo Logo](images/logo.png) <!-- Replace with the actual path to your logo -->
 
 ## Overview
 
