@@ -1,4 +1,5 @@
 "use client"
+import { createCheckoutSession, Metadata } from '@/actions/createCheckoutSession';
 import Container from '@/components/Container';
 import EmptyCart from '@/components/EmptyCart';
 import NoAccessToCart from '@/components/NoAccessToCart';
@@ -38,6 +39,7 @@ const CartPage = () => {
     const { user } = useUser();
     const [addresses, setAddresses] = useState<Address [] | null>(null);
     const [selectedAddress, setSelectedAddress] = useState<Address | null>(null);
+
     const fetchAddresses = async()=>{
       setLoading(true)
       try {
@@ -67,6 +69,30 @@ const CartPage = () => {
         toast.success("Cart Reset Successfully")
       }
     };
+
+    const handleCheckout = async()=>{
+      setLoading(true);
+      try {
+        const metadata: Metadata = {
+          orderNumber:crypto.randomUUID(),
+          customerName:user?.fullName ?? "Unknown",
+          customerEmail:user?.emailAddresses[0]?.emailAddress ?? "Unknown",
+          clerkUserId: user?.id,
+          address: selectedAddress, 
+        };
+
+          const checkoutUrl=await createCheckoutSession(groupedItems, metadata);
+          
+        if (checkoutUrl){
+          window.location.href = checkoutUrl ;
+        }
+        
+      } catch (error) {
+        console.error("Error creating checkout session", error)
+      }finally{
+        setLoading(false);
+      }
+    }
   return (
     <div className="bg-gray-100 pb-52 md:pb-10">
         {isSignedIn ? (
@@ -194,8 +220,12 @@ const CartPage = () => {
                           className="text-lg font-bold text-darkColor"
                           />
                         </div>
-                        <Button className="w-full rounded-full font-semibold tracking-wide hoverEffect"
+                        <Button 
+                        className="w-full rounded-full font-semibold tracking-wide 
+                        hoverEffect"
                         size="lg"
+                        disabled={loading}
+                        onClick={handleCheckout}
                         >
                           {loading ? "Please wait..." : "Proceed to Checkout"}
                         </Button>
@@ -246,6 +276,34 @@ const CartPage = () => {
                 <h2>
                   Order Summary
                 </h2>
+                <div className="space-y-4 ">
+                        <div className="flex items-center justify-between">
+                          <span>SubTotal</span>
+                          <PriceFormatter amount={getSubTotalPrice()}/>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span>Discount</span>
+                          <PriceFormatter amount={getSubTotalPrice() - getTotalPrice()}
+                          />
+                        </div>
+                        <Separator/>
+                        <div className="flex items-center justify-between 
+                        font-semibold text-lg">
+                          <span>Total</span>
+                          <PriceFormatter amount={getTotalPrice()} 
+                          className="text-lg font-bold text-darkColor"
+                          />
+                        </div>
+                        <Button 
+                        className="w-full rounded-full font-semibold tracking-wide 
+                        hoverEffect"
+                        size="lg"
+                        disabled={loading}
+                        onClick={handleCheckout}
+                        >
+                          {loading ? "Please wait..." : "Proceed to Checkout"}
+                        </Button>
+                    </div>
               </div>
             </div>
         </div>
